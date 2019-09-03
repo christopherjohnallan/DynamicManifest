@@ -1,4 +1,5 @@
 const express = require ('express');
+const serverless = require('serverless-http');
 const app = express ();
 app.set ('view engine', 'hbs');
 app.use (express.static (__dirname + '/public'));
@@ -26,3 +27,5 @@ app.get ('/:orgName', (req, res) => {
 });
 
 app.listen (3000, () => console.log ('Whitelist  app listening on port 3000!'));
+
+module.exports.handler = serverless(app);
